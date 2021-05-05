@@ -1,0 +1,21 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Todo App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michael-gann/Todo-App-Kadince.git"
+  },
+  "keywords": [
+    "/config/keys.js"
+  ],
+  "author": "Michael Gann",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
