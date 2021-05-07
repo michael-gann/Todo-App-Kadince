@@ -1,5 +1,4 @@
 const express = require("express");
-// const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 
@@ -7,6 +6,8 @@ const { setTokenCookie, restoreUser } = require("../../utils/auth");
 const { User } = require("../../db/models");
 
 const router = express.Router();
+
+// TODO: add validations
 
 router.post(
   "/sign-up",
@@ -55,8 +56,6 @@ router.post(
       },
     });
 
-    console.log("USER ------- ", user);
-
     if (!user) {
       const err = new Error("Login failed");
       err.status = 401;
@@ -89,7 +88,7 @@ router.delete("/logout", (_req, res) => {
   return res.json({ message: "success" });
 });
 
-// Restore session user
+// Restore user
 router.get("/restore", restoreUser, (req, res) => {
   const { user } = req;
   if (user) {
