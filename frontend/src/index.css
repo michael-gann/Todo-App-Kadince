@@ -23,7 +23,12 @@ list-style: none;
 }
 
 body, html {
-    background-color: white;
+    background: linear-gradient(to right top, #66cde7, #c6ebfc);
     font-family: 'Raleway', sans-serif;
     /* color: white; */
+    height: 100vh;
+}
+
+#root {
+  height: 100%;
 }

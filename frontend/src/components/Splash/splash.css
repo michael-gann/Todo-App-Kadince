@@ -1,0 +1,29 @@
+.splash-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 8%;
+}
+
+.splash-container > .splash-content {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    height: 60vh;
+    border-radius: 1.5rem;
+    /* backdrop-filter: blur(100rem);
+    z-index: 2; */
+    background: white;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2) )
+}
+
+.splash-container > .splash-content > .splash-welcome {
+    align-self: center;
+    font-size: 2rem;
+    padding: .2em;
+}
+
+.splash-container > .splash-content > .splash-text {
+    padding: .3em;
+    align-self: center;
+    font-size: 1.3rem;
+}
