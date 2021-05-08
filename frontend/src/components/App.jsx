@@ -48,6 +48,7 @@ function App() {
         </Route>
         <Route path="/todos" exact={true}>
           <TodoDisplay
+            user={user}
             authenticated={authenticated}
             todos={todos}
             setTodos={setTodos}
