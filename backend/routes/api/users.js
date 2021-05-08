@@ -56,27 +56,25 @@ router.post(
       },
     });
 
-    if (!user) {
-      const err = new Error("Login failed");
-      err.status = 401;
-      err.title = "Login failed";
-      err.errors = ["The provided credentials were invalid"];
-      return next(err);
-    }
+    // if (!user) {
+    //   const err = new Error("Login failed");
+    //   err.status = 401;
+    //   err.title = "Login failed";
+    //   err.errors = ["The provided credentials were invalid"];
+    //   return next(err);
+    // }
 
     await setTokenCookie(res, user);
 
     if (user && bcrypt.compareSync(password, user.hashedPassword.toString())) {
       return res.json({
-        user: {
-          firstName: user.firstName,
-          lastName: user.lastName,
-          email: user.email,
-        },
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
       });
     } else {
       return res.status(401).json({
-        error: "Login Failed",
+        errors: { errors: "Login failed" },
       });
     }
   })
