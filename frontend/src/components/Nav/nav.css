@@ -9,9 +9,10 @@ nav h1 {
     display: flex;
     justify-content: center;
     grid-column-start: 2;
-    font-size: 2.5em;
+    font-size: 3em;
     padding: .2em;
     color: rgb(14, 235, 235);
+    font-family: 'Itim', cursive;
 }
 
 nav > .login-button-container {
@@ -23,4 +24,5 @@ nav > .login-button-container > .login-button {
     height: 100%;
     width: 30%;
     background-color: white;
+    font-size: 1.3em;
 }
