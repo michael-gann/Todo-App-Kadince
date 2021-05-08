@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Nav from "./Nav/Nav";
@@ -12,6 +12,23 @@ import "../App.css";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
+  const [user, setUser] = useState({});
+  const [todos, setTodos] = useState({});
+
+  useEffect(() => {
+    if (authenticated) {
+      setUser((prevState) => {
+        return { ...prevState, ...JSON.parse(localStorage.getItem("user")) };
+      });
+
+      const getTodos = async () => {
+        const userTodos = await fetch("/api/todos");
+        setTodos(await userTodos.json());
+      };
+
+      getTodos();
+    }
+  }, [authenticated]);
 
   return (
     <BrowserRouter>
@@ -30,7 +47,11 @@ function App() {
           <Signup />
         </Route>
         <Route path="/todos" exact={true}>
-          <TodoDisplay authenticated={authenticated} />
+          <TodoDisplay
+            authenticated={authenticated}
+            todos={todos}
+            setTodos={setTodos}
+          />
         </Route>
         <Route path="*">
           <PageNotFound />
