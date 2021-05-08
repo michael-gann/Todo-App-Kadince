@@ -3,6 +3,7 @@ nav {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     border-bottom: 1px solid rgba(0, 0, 0, 0.192);
+    background-color: white;
 }
 
 nav h1 {

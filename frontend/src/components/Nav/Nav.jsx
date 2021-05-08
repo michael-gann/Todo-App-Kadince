@@ -1,16 +1,26 @@
-import React from 'react'
+import React from "react";
+import { useHistory } from "react-router";
 
-import "./nav.css"
+import "./nav.css";
 
 const Nav = () => {
-    return (
-        <nav>
-            <h1>Todo's</h1>
-            <div className="login-button-container">
-                <button className="login-button">Login</button>
-            </div>
-        </nav>
-    )
-}
+  const history = useHistory();
 
-export default Nav
+  const handleClick = (e) => {
+    e.preventDefault();
+    return history.push("/login");
+  };
+
+  return (
+    <nav>
+      <h1>Todo's</h1>
+      <div className="login-button-container">
+        <button className="login-button" onClick={handleClick}>
+          Login
+        </button>
+      </div>
+    </nav>
+  );
+};
+
+export default Nav;
