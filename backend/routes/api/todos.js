@@ -14,6 +14,8 @@ router.post(
   asyncHandler(async (req, res) => {
     const { userId, title, isComplete } = req.body;
 
+    //TODO: handle error
+
     const todo = await Todo.create({
       userId,
       title,
