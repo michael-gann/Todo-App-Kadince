@@ -7,9 +7,7 @@ import { Redirect } from "react-router-dom";
 const TodoDisplay = ({ authenticated, todos, setTodos }) => {
   const updateChecked = async (todoId) => {
     todos[todoId] = { ...todos[todoId], isComplete: !todos[todoId].isComplete };
-    // console.log(todos);
 
-    console.log(todoId);
     const res = await fetch("/api/todos", {
       method: "PUT",
       headers: {
@@ -24,14 +22,11 @@ const TodoDisplay = ({ authenticated, todos, setTodos }) => {
 
     const updateIsComplete = await res.json();
 
-    console.log(updateIsComplete);
-
     if (!updateIsComplete.errors) {
       setTodos((prev) => {
         return { ...prev, ...todos };
       });
     } else {
-      console.log(updateIsComplete.errors);
     }
   };
 
