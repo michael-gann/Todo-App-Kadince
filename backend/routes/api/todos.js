@@ -1,6 +1,8 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 
+const { restoreUser } = require("../../utils/auth");
+
 const { Todo } = require("../../db/models");
 
 const router = express.Router();
@@ -24,12 +26,13 @@ router.post(
 
 router.get(
   "",
+  restoreUser,
   asyncHandler(async (req, res) => {
-    const { id } = req.body;
+    const { user } = req;
 
     const allTodos = await Todo.findAll({
       where: {
-        userId: id,
+        userId: user.id,
       },
     });
 
@@ -39,14 +42,15 @@ router.get(
       todosById[todo.id] = todo;
     }
 
-    return res.json({ todosById });
+    return res.json(todosById);
   })
 );
 
 router.put(
   "",
   asyncHandler(async (req, res) => {
-    const { id, newTitle } = req.body;
+    const { id, newTitle, newIsComplete } = req.body;
+    console.log(req.body, id);
 
     const todoToUpdate = await Todo.findByPk(id);
 
@@ -54,6 +58,7 @@ router.put(
       await Todo.update(
         {
           title: newTitle,
+          isComplete: newIsComplete,
         },
         {
           where: {

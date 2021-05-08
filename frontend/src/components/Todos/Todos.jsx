@@ -1,12 +1,17 @@
-import React from 'react'
+import React from "react";
 
-const Todos = () => {
+import Todo from "../Todo/Todo";
 
-    return (
-        <div>
+const Todos = ({ todos, updateChecked }) => {
+  return (
+    <>
+      {Object.values(todos).map((todo) => {
+        return (
+          <Todo key={todo.id} todo={todo} updateChecked={updateChecked}></Todo>
+        );
+      })}
+    </>
+  );
+};
 
-        </div>
-    )
-}
-
-export default Todos
+export default Todos;

@@ -68,6 +68,7 @@ router.post(
 
     if (user && bcrypt.compareSync(password, user.hashedPassword.toString())) {
       return res.json({
+        id: user.id,
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
@@ -91,11 +92,10 @@ router.get("/restore", restoreUser, (req, res) => {
   const { user } = req;
   if (user) {
     return res.json({
-      user: {
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-      },
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
     });
   } else return res.json({});
 });
