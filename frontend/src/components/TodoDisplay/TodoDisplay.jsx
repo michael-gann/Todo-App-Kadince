@@ -1,12 +1,9 @@
-import React from 'react'
+import React from "react";
 
-const TodoDisplay = () => {
+import { Redirect } from "react-router-dom";
 
-    return (
-        <div>
-            Todo's will live here
-        </div>
-    )
-}
+const TodoDisplay = ({ authenticated }) => {
+  return authenticated ? <div>todos here</div> : <Redirect to="/login" />;
+};
 
 export default TodoDisplay;

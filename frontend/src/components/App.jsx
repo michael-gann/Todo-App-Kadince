@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Nav from "./Nav/Nav";
@@ -10,6 +11,8 @@ import PageNotFound from "./PageNotFound/PageNotFound";
 import "../App.css";
 
 function App() {
+  const [authenticated, setAuthenticated] = useState(false);
+
   return (
     <BrowserRouter>
       <Nav />
@@ -18,13 +21,16 @@ function App() {
           <Splash />
         </Route>
         <Route path="/login" exact={true}>
-          <Login />
+          <Login
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
         </Route>
         <Route path="/signup" exact={true}>
           <Signup />
         </Route>
         <Route path="/todos" exact={true}>
-          <TodoDisplay />
+          <TodoDisplay authenticated={authenticated} />
         </Route>
         <Route path="*">
           <PageNotFound />
