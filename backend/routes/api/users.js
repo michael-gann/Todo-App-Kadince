@@ -34,9 +34,7 @@ router.post(
 
       await setTokenCookie(res, safeUser);
 
-      return res.json({
-        safeUser,
-      });
+      return res.json(safeUser);
     } else {
       return res.json({
         error: "Email already in use",

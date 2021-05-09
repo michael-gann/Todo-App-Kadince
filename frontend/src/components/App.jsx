@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
+import { fetch } from "../util/csrf";
+
 import Nav from "./Nav/Nav";
 import Splash from "./Splash/Splash";
 import Login from "./Login/Login";
@@ -23,7 +25,7 @@ function App() {
 
       const getTodos = async () => {
         const userTodos = await fetch("/api/todos");
-        setTodos(await userTodos.json());
+        setTodos(userTodos.data);
       };
 
       getTodos();
@@ -32,7 +34,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Nav />
+      <Nav authenticated={authenticated} setAuthenticated={setAuthenticated} />
       <Switch>
         <Route path="/" exact={true}>
           <Splash />

@@ -21,7 +21,7 @@ nav > .login-button-container {
     justify-content: flex-end
 }
 
-nav > .login-button-container > .login-button {
+nav > .login-button-container > .login-button, .logout-button {
     height: 100%;
     width: 30%;
     background-color:  rgb(16, 17, 17);
@@ -29,7 +29,7 @@ nav > .login-button-container > .login-button {
     transition: color 250ms ease-in-out;
 }
 
-nav > .login-button-container > .login-button:hover {
+nav > .login-button-container > .login-button:hover, .logout-button:hover {
     color: cyan;
     cursor: pointer;
 }
