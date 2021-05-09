@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
+import { fetch } from "../../util/csrf";
+
 import Todos from "../Todos/Todos";
 import CreateATodo from "../CreateATodo/CreateATodo";
-
-import { Redirect } from "react-router-dom";
 
 import "./todoDisplay.css";
 
@@ -29,7 +29,7 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
       }),
     });
 
-    const updateIsComplete = await res.json();
+    const updateIsComplete = res.data;
 
     if (!updateIsComplete.errors) {
       setTodos((prev) => {
@@ -41,6 +41,7 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
   };
 
   const createTodo = async () => {
+    console.log(user);
     if (title) {
       const res = await fetch("/api/todos", {
         method: "POST",
@@ -53,7 +54,7 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
         }),
       });
 
-      const newTodo = await res.json();
+      const newTodo = res.data;
 
       setTodos((prev) => {
         return { ...prev, [newTodo.todo.id]: newTodo.todo };
@@ -115,7 +116,7 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
       }),
     });
 
-    const updatedTodo = await res.json();
+    const updatedTodo = res.data;
 
     if (!updatedTodo.errors) {
       todos[id] = { ...todos[id], title: newTitle };
@@ -138,7 +139,7 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
       }),
     });
 
-    const deleted = res.json();
+    const deleted = res.data;
 
     if (!deleted.errors) {
       console.log(todos, id);
@@ -194,9 +195,8 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
         ) : null}
       </div>
     </div>
-  ) : (
-    <Redirect to="/login" />
-  );
+  ) : // <Redirect to="/login" />
+  null;
 };
 
 export default TodoDisplay;

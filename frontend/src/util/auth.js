@@ -1,3 +1,5 @@
+import { fetch } from "./csrf";
+
 export const authenticate = async () => {
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -9,7 +11,7 @@ export const authenticate = async () => {
 };
 
 export const login = async (email, password) => {
-  const response = await fetch("/api/users/login", {
+  const res = await fetch("/api/users/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -20,7 +22,7 @@ export const login = async (email, password) => {
     }),
   });
 
-  const user = await response.json();
+  const user = res.data;
 
   if (!user.errors) {
     localStorage.setItem("user", JSON.stringify(user));
@@ -31,31 +33,36 @@ export const login = async (email, password) => {
   return user;
 };
 
-// export const logout = async () => {
-//   const response = await fetch("/api/auth/logout", {
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
+export const logout = async () => {
+  const res = await fetch("/api/users/logout", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-//   const data = await response.json();
-//   if (data.message === "User logged out") {
-//     localStorage.removeItem("user");
-//   }
-// };
+  const loggedOut = res.data;
+  localStorage.clear();
 
-// export const signUp = async (firstName, lastName, email, password) => {
-//   const response = await fetch("/api/auth/signup", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       first_name: firstName,
-//       last_name: lastName,
-//       email,
-//       password,
-//     }),
-//   });
-//   return await response.json();
-// };
+  if (loggedOut.message === "success") {
+    return true;
+  } else {
+    console.error("Trouble logging out");
+  }
+};
+
+export const signUp = async (firstName, lastName, email, password) => {
+  const res = await fetch("/api/users/signup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      firstName: firstName,
+      lastName: lastName,
+      email,
+      password,
+    }),
+  });
+  return await res.data;
+};

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
+import { fetch } from "../util/csrf";
+
 import Nav from "./Nav/Nav";
 import Splash from "./Splash/Splash";
 import Login from "./Login/Login";
@@ -23,16 +25,25 @@ function App() {
 
       const getTodos = async () => {
         const userTodos = await fetch("/api/todos");
-        setTodos(await userTodos.json());
+        setTodos(userTodos.data);
       };
 
       getTodos();
     }
   }, [authenticated]);
 
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const currentUser = JSON.parse(loggedInUser);
+      setUser(currentUser);
+      setAuthenticated(true);
+    }
+  }, []);
+
   return (
     <BrowserRouter>
-      <Nav />
+      <Nav authenticated={authenticated} setAuthenticated={setAuthenticated} />
       <Switch>
         <Route path="/" exact={true}>
           <Splash />
@@ -44,7 +55,10 @@ function App() {
           />
         </Route>
         <Route path="/signup" exact={true}>
-          <Signup />
+          <Signup
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
         </Route>
         <Route path="/todos" exact={true}>
           <TodoDisplay

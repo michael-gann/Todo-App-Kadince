@@ -10,7 +10,7 @@ const router = express.Router();
 // TODO: add validations
 
 router.post(
-  "/sign-up",
+  "/signup",
   asyncHandler(async (req, res) => {
     const { firstName, lastName, email, password } = req.body;
 
@@ -34,9 +34,7 @@ router.post(
 
       await setTokenCookie(res, safeUser);
 
-      return res.json({
-        safeUser,
-      });
+      return res.json(safeUser);
     } else {
       return res.json({
         error: "Email already in use",
