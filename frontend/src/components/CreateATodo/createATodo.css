@@ -10,14 +10,14 @@
 .create-a-todo > div {
     font-size: 2em;
     color:rgb(146, 139, 139);
-    margin-bottom: .5em;
-    border-bottom: 1px solid cyan;
-    width: 50%;
+    margin-bottom: .6em;
+    /* border-bottom: 2px solid cyan; */
+    width: 27%;
     text-align: center;
 }
 
 .create-a-todo > input {
-    width: 25em;
+    width: 20em;
     height: 2em;
     font-size: 1.2em;
     border-radius: 1em;
@@ -28,8 +28,8 @@
 }
 
 .create-a-todo > button {
-    width: 25em;
-    height: 2em;
+    width: 24em;
+    height: 2.3em;
     border-radius: 5em;
     padding: .4em;
     margin: .2em;
