@@ -115,15 +115,38 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
       }),
     });
 
-    const updateIsComplete = await res.json();
+    const updatedTodo = await res.json();
 
-    if (!updateIsComplete.errors) {
+    if (!updatedTodo.errors) {
       todos[id] = { ...todos[id], title: newTitle };
       setTodos((prev) => {
         return { ...prev, ...todos };
       });
     } else {
-      console.error(updateIsComplete.errors);
+      console.error(updatedTodo.errors);
+    }
+  };
+
+  const deleteTodo = async (id) => {
+    const res = await fetch("/api/todos", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+      }),
+    });
+
+    const deleted = res.json();
+
+    if (!deleted.errors) {
+      console.log(todos, id);
+      delete todos[id];
+      setTodos({ ...todos });
+      console.log(todos);
+    } else {
+      console.error(deleted.errors);
     }
   };
 
@@ -150,6 +173,7 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
             todos={Object.values(todos).filter((todo) => !todo.isComplete)}
             updateChecked={updateChecked}
             editCurrentTodo={editCurrentTodo}
+            deleteTodo={deleteTodo}
           />
         ) : null}
         {showComplete ? (
@@ -157,6 +181,7 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
             todos={Object.values(todos).filter((todo) => todo.isComplete)}
             updateChecked={updateChecked}
             editCurrentTodo={editCurrentTodo}
+            deleteTodo={deleteTodo}
           />
         ) : null}
         {showAll ? (
@@ -164,6 +189,7 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
             todos={todos}
             updateChecked={updateChecked}
             editCurrentTodo={editCurrentTodo}
+            deleteTodo={deleteTodo}
           />
         ) : null}
       </div>

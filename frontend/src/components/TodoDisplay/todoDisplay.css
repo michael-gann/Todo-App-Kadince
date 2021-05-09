@@ -41,12 +41,49 @@
     /* height: 80%; */
 }
 
-.todo-item {
+.todo-item-hover {
     display: grid;
-    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-columns: 1fr 10fr 1fr 1fr;
     grid-template-rows: 1fr;
     font-size: 1.2em;
     height: 1em;
-    margin: .2em;
-
+    margin: .5em;
 }
+
+.edit-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 20px;
+}
+
+.todo-item svg:hover {
+    cursor: pointer;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.complete-todo {
+    text-decoration: 1px line-through cyan;
+    opacity: 0.3;
+}
+
+.hovering {
+    /* color: cyan; */
+}
+
+.edit-button {
+    color: #218ece;
+}
+
+.delete-button {
+    color: #c24848;
+}
+
+.pending-todo {
+    color:rgb(105, 139, 145)
+}
+
+/* good green: #2dc46c; */
