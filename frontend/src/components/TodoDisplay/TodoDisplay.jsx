@@ -5,14 +5,14 @@ import CreateATodo from "../CreateATodo/CreateATodo";
 
 import { Redirect } from "react-router-dom";
 
+import "./todoDisplay.css";
+
 const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
   const [title, setTitle] = useState("");
 
   const [showPending, setShowPending] = useState(false);
   const [showComplete, setShowComplete] = useState(false);
   const [showAll, setShowAll] = useState(true);
-  const [editValue, setEditValue] = useState("");
-  const [editTodo, setEditTodo] = useState({});
 
   const updateChecked = async (todoId) => {
     todos[todoId] = { ...todos[todoId], isComplete: !todos[todoId].isComplete };
@@ -69,37 +69,37 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
         if (showAll) {
           return;
         } else {
+          showComplete
+            ? setShowComplete((prev) => !prev)
+            : setShowPending((prev) => !prev);
           setShowAll((prev) => !prev);
-          showPending
-            ? setShowPending((prev) => !prev)
-            : setShowComplete((prev) => !prev);
         }
         break;
       case "pending":
         if (showPending) {
           return;
         } else {
-          setShowPending((prev) => !prev);
           showAll
             ? setShowAll((prev) => !prev)
             : setShowComplete((prev) => !prev);
+          setShowPending((prev) => !prev);
         }
         break;
       case "complete":
         if (showComplete) {
           return;
         } else {
-          setShowComplete((prev) => !prev);
           showPending
             ? setShowPending((prev) => !prev)
-            : setShowComplete((prev) => !prev);
+            : setShowAll((prev) => !prev);
+          setShowComplete((prev) => !prev);
         }
         break;
       default:
         break;
     }
 
-    // console.log(showAll, showPending, showComplete);
+    console.log(showAll, showPending, showComplete);
   };
 
   const editCurrentTodo = async (id, newTitle, newIsComplete) => {
@@ -115,15 +115,38 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
       }),
     });
 
-    const updateIsComplete = await res.json();
+    const updatedTodo = await res.json();
 
-    if (!updateIsComplete.errors) {
+    if (!updatedTodo.errors) {
       todos[id] = { ...todos[id], title: newTitle };
       setTodos((prev) => {
         return { ...prev, ...todos };
       });
     } else {
-      console.error(updateIsComplete.errors);
+      console.error(updatedTodo.errors);
+    }
+  };
+
+  const deleteTodo = async (id) => {
+    const res = await fetch("/api/todos", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+      }),
+    });
+
+    const deleted = res.json();
+
+    if (!deleted.errors) {
+      console.log(todos, id);
+      delete todos[id];
+      setTodos({ ...todos });
+      console.log(todos);
+    } else {
+      console.error(deleted.errors);
     }
   };
 
@@ -139,6 +162,7 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
         ></CreateATodo>
       </div>
       <div className="todos-container">
+        <div className="filters">Filters</div>
         <div className="view-controls">
           <button onClick={() => updateView("all")}>All</button>
           <button onClick={() => updateView("pending")}>Pending</button>
@@ -148,24 +172,24 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
           <Todos
             todos={Object.values(todos).filter((todo) => !todo.isComplete)}
             updateChecked={updateChecked}
-            editTodo={editTodo}
             editCurrentTodo={editCurrentTodo}
+            deleteTodo={deleteTodo}
           />
         ) : null}
         {showComplete ? (
           <Todos
             todos={Object.values(todos).filter((todo) => todo.isComplete)}
             updateChecked={updateChecked}
-            editTodo={editTodo}
             editCurrentTodo={editCurrentTodo}
+            deleteTodo={deleteTodo}
           />
         ) : null}
         {showAll ? (
           <Todos
             todos={todos}
             updateChecked={updateChecked}
-            editTodo={editTodo}
             editCurrentTodo={editCurrentTodo}
+            deleteTodo={deleteTodo}
           />
         ) : null}
       </div>

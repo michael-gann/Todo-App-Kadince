@@ -1,0 +1,47 @@
+.create-a-todo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    margin-top: 1%;
+}
+
+.create-a-todo > div {
+    font-size: 2em;
+    color:rgb(146, 139, 139);
+    margin-bottom: .6em;
+    /* border-bottom: 2px solid cyan; */
+    width: 27%;
+    text-align: center;
+}
+
+.create-a-todo > input {
+    width: 20em;
+    height: 2em;
+    font-size: 1.2em;
+    border-radius: 1em;
+    color: cyan;
+    background-color:  rgb(36, 34, 34);
+    padding: 15px;
+    margin-bottom: .8em;
+}
+
+.create-a-todo > button {
+    width: 24em;
+    height: 2.3em;
+    border-radius: 5em;
+    padding: .4em;
+    margin: .2em;
+    font-size: 1em;
+    color:rgb(36, 34, 34);
+    background-image: linear-gradient(to right top, #00aad4, #16dbe9);
+    transition: color 250ms ease-in-out,
+                font-weight 150ms ease-in-out;
+}
+
+.create-a-todo > button:hover {
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}

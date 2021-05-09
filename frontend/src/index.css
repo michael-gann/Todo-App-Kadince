@@ -5,7 +5,7 @@ ol, li, dl, dt, dd, form, a, fieldset, input, th, td, button {
     border: 0;
     outline: none;
     box-sizing: border-box;
-    color: rgb(83, 83, 83);
+    color: rgb(107, 99, 99);
 }
 
 a {
@@ -23,7 +23,7 @@ list-style: none;
 }
 
 body, html {
-    background: linear-gradient(to right top, #66cde7, #c6ebfc);
+    background: #0e0d0d;
     font-family: 'Raleway', sans-serif;
     /* color: white; */
     height: 100vh;

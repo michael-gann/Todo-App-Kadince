@@ -2,9 +2,14 @@ import React from "react";
 
 const LoginPassword = ({ userPassword, updatePassword }) => {
   return (
-    <>
-      <input value={userPassword} onChange={updatePassword}></input>
-    </>
+    <div className="password-input">
+      <input
+        type="password"
+        value={userPassword}
+        onChange={updatePassword}
+        placeholder="Password"
+      ></input>
+    </div>
   );
 };
 
