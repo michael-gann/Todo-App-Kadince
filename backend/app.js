@@ -17,7 +17,7 @@ app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.static("/frontend/public"));
-// app.use(favicon(path.join(__dirname, "..", "/frontend/public", "favicon.ico")));
+app.use(favicon(path.join(__dirname, "..", "/frontend/public", "favicon.ico")));
 
 if (!isProduction) {
   // enable cors only in development
