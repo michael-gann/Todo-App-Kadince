@@ -5,6 +5,7 @@ const helmet = require("helmet");
 const csurf = require("csurf");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const favicon = require("serve-favicon");
 
 const routes = require("./routes");
 const { environment } = require("./config");
