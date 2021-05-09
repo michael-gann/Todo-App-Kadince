@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./createATodo.css";
+
 const CreateATodo = ({ todos, setTodos, createTodo, title, setTitle }) => {
   return (
     <>
