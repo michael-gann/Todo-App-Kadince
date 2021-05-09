@@ -11,6 +11,8 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
   const [showPending, setShowPending] = useState(false);
   const [showComplete, setShowComplete] = useState(false);
   const [showAll, setShowAll] = useState(true);
+  const [editValue, setEditValue] = useState("");
+  const [editTodo, setEditTodo] = useState({});
 
   const updateChecked = async (todoId) => {
     todos[todoId] = { ...todos[todoId], isComplete: !todos[todoId].isComplete };
@@ -97,7 +99,32 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
         break;
     }
 
-    console.log(showAll, showPending, showComplete);
+    // console.log(showAll, showPending, showComplete);
+  };
+
+  const editCurrentTodo = async (id, newTitle, newIsComplete) => {
+    const res = await fetch("/api/todos", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        newTitle,
+        newIsComplete,
+      }),
+    });
+
+    const updateIsComplete = await res.json();
+
+    if (!updateIsComplete.errors) {
+      todos[id] = { ...todos[id], title: newTitle };
+      setTodos((prev) => {
+        return { ...prev, ...todos };
+      });
+    } else {
+      console.error(updateIsComplete.errors);
+    }
   };
 
   return authenticated ? (
@@ -111,20 +138,37 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
           createTodo={createTodo}
         ></CreateATodo>
       </div>
-      <div className="view-controls">
-        <button onClick={() => updateView("all")}>All</button>
-        <button onClick={() => updateView("pending")}>Pending</button>
-        <button onClick={() => updateView("complete")}>Complete</button>
+      <div className="todos-container">
+        <div className="view-controls">
+          <button onClick={() => updateView("all")}>All</button>
+          <button onClick={() => updateView("pending")}>Pending</button>
+          <button onClick={() => updateView("complete")}>Complete</button>
+        </div>
+        {showPending ? (
+          <Todos
+            todos={Object.values(todos).filter((todo) => !todo.isComplete)}
+            updateChecked={updateChecked}
+            editTodo={editTodo}
+            editCurrentTodo={editCurrentTodo}
+          />
+        ) : null}
+        {showComplete ? (
+          <Todos
+            todos={Object.values(todos).filter((todo) => todo.isComplete)}
+            updateChecked={updateChecked}
+            editTodo={editTodo}
+            editCurrentTodo={editCurrentTodo}
+          />
+        ) : null}
+        {showAll ? (
+          <Todos
+            todos={todos}
+            updateChecked={updateChecked}
+            editTodo={editTodo}
+            editCurrentTodo={editCurrentTodo}
+          />
+        ) : null}
       </div>
-      {showPending ? (
-        <Todos
-          todos={Object.values(todos).filter((todo) => !todo.isComplete)}
-        />
-      ) : null}
-      {showComplete ? (
-        <Todos todos={Object.values(todos).filter((todo) => todo.isComplete)} />
-      ) : null}
-      {showAll ? <Todos todos={todos} updateChecked={updateChecked} /> : null}
     </div>
   ) : (
     <Redirect to="/login" />
