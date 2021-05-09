@@ -69,6 +69,9 @@ const Login = ({ authenticated, setAuthenticated }) => {
             Demo Login
           </button>
         </div>
+        <div className="have-an-account">
+          Don't have an account? Signup<a href="/signup">{`${" here"}`}</a>
+        </div>
       </form>
     </div>
   );
