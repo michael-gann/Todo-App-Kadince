@@ -5,14 +5,14 @@ import CreateATodo from "../CreateATodo/CreateATodo";
 
 import { Redirect } from "react-router-dom";
 
+import "./todoDisplay.css";
+
 const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
   const [title, setTitle] = useState("");
 
   const [showPending, setShowPending] = useState(false);
   const [showComplete, setShowComplete] = useState(false);
   const [showAll, setShowAll] = useState(true);
-  const [editValue, setEditValue] = useState("");
-  const [editTodo, setEditTodo] = useState({});
 
   const updateChecked = async (todoId) => {
     todos[todoId] = { ...todos[todoId], isComplete: !todos[todoId].isComplete };
@@ -69,37 +69,37 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
         if (showAll) {
           return;
         } else {
+          showComplete
+            ? setShowComplete((prev) => !prev)
+            : setShowPending((prev) => !prev);
           setShowAll((prev) => !prev);
-          showPending
-            ? setShowPending((prev) => !prev)
-            : setShowComplete((prev) => !prev);
         }
         break;
       case "pending":
         if (showPending) {
           return;
         } else {
-          setShowPending((prev) => !prev);
           showAll
             ? setShowAll((prev) => !prev)
             : setShowComplete((prev) => !prev);
+          setShowPending((prev) => !prev);
         }
         break;
       case "complete":
         if (showComplete) {
           return;
         } else {
-          setShowComplete((prev) => !prev);
           showPending
             ? setShowPending((prev) => !prev)
-            : setShowComplete((prev) => !prev);
+            : setShowAll((prev) => !prev);
+          setShowComplete((prev) => !prev);
         }
         break;
       default:
         break;
     }
 
-    // console.log(showAll, showPending, showComplete);
+    console.log(showAll, showPending, showComplete);
   };
 
   const editCurrentTodo = async (id, newTitle, newIsComplete) => {
@@ -139,6 +139,7 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
         ></CreateATodo>
       </div>
       <div className="todos-container">
+        <div className="filters">Filters</div>
         <div className="view-controls">
           <button onClick={() => updateView("all")}>All</button>
           <button onClick={() => updateView("pending")}>Pending</button>
@@ -148,7 +149,6 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
           <Todos
             todos={Object.values(todos).filter((todo) => !todo.isComplete)}
             updateChecked={updateChecked}
-            editTodo={editTodo}
             editCurrentTodo={editCurrentTodo}
           />
         ) : null}
@@ -156,7 +156,6 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
           <Todos
             todos={Object.values(todos).filter((todo) => todo.isComplete)}
             updateChecked={updateChecked}
-            editTodo={editTodo}
             editCurrentTodo={editCurrentTodo}
           />
         ) : null}
@@ -164,7 +163,6 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
           <Todos
             todos={todos}
             updateChecked={updateChecked}
-            editTodo={editTodo}
             editCurrentTodo={editCurrentTodo}
           />
         ) : null}

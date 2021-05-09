@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 
-const Todo = ({ todo, updateChecked, setEditTodo, editCurrentTodo }) => {
+const Todo = ({ todo, updateChecked, editCurrentTodo }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(todo.title);
-
-  console.log(editCurrentTodo);
 
   return (
     <div className="todo-item">

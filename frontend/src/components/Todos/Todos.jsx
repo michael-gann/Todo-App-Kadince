@@ -4,7 +4,7 @@ import Todo from "../Todo/Todo";
 
 const Todos = ({ todos, updateChecked, editCurrentTodo }) => {
   return (
-    <>
+    <div className="todo-item-container">
       {Object.values(todos).map((todo) => {
         return (
           <Todo
@@ -15,7 +15,7 @@ const Todos = ({ todos, updateChecked, editCurrentTodo }) => {
           ></Todo>
         );
       })}
-    </>
+    </div>
   );
 };
 

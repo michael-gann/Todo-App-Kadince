@@ -1,0 +1,52 @@
+.todos-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.view-controls {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+    color: rgb(146, 139, 139);
+}
+
+.view-controls button {
+    height: 2em;
+    width: 10em;
+    margin: 1em;
+    border-radius: 1em;
+    color:rgb(36, 34, 34);
+    background-image: linear-gradient(to right top, #00aad4, #16dbe9);
+    transition: color 250ms ease-in-out,
+                font-weight 150ms ease-in-out;
+}
+
+.view-controls button:hover {
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}
+
+.todo-item-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    /* height: 80%; */
+}
+
+.todo-item {
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-rows: 1fr;
+    font-size: 1.2em;
+    height: 1em;
+    margin: .2em;
+
+}
