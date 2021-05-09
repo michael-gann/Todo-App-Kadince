@@ -10,7 +10,7 @@ const router = express.Router();
 // TODO: add validations
 
 router.post(
-  "/sign-up",
+  "/signup",
   asyncHandler(async (req, res) => {
     const { firstName, lastName, email, password } = req.body;
 

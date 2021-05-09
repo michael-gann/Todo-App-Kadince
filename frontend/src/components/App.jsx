@@ -32,6 +32,15 @@ function App() {
     }
   }, [authenticated]);
 
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const currentUser = JSON.parse(loggedInUser);
+      setUser(currentUser);
+      setAuthenticated(true);
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <Nav authenticated={authenticated} setAuthenticated={setAuthenticated} />
@@ -46,7 +55,10 @@ function App() {
           />
         </Route>
         <Route path="/signup" exact={true}>
-          <Signup />
+          <Signup
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
         </Route>
         <Route path="/todos" exact={true}>
           <TodoDisplay

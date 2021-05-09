@@ -5,8 +5,6 @@ import { fetch } from "../../util/csrf";
 import Todos from "../Todos/Todos";
 import CreateATodo from "../CreateATodo/CreateATodo";
 
-import { Redirect } from "react-router-dom";
-
 import "./todoDisplay.css";
 
 const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
@@ -43,6 +41,7 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
   };
 
   const createTodo = async () => {
+    console.log(user);
     if (title) {
       const res = await fetch("/api/todos", {
         method: "POST",
@@ -196,9 +195,8 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
         ) : null}
       </div>
     </div>
-  ) : (
-    <Redirect to="/login" />
-  );
+  ) : // <Redirect to="/login" />
+  null;
 };
 
 export default TodoDisplay;

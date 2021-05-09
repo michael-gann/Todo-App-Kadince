@@ -31,6 +31,7 @@ router.get(
   restoreUser,
   asyncHandler(async (req, res) => {
     const { user } = req;
+    console.log("USERRRRR ___________", user);
 
     const allTodos = await Todo.findAll({
       where: {
