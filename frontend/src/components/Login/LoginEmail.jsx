@@ -2,9 +2,13 @@ import React from "react";
 
 const LoginEmail = ({ userEmail, updateEmail }) => {
   return (
-    <>
-      <input value={userEmail} onChange={updateEmail}></input>
-    </>
+    <div className="email-input">
+      <input
+        value={userEmail}
+        onChange={updateEmail}
+        placeholder="example@domain.com"
+      ></input>
+    </div>
   );
 };
 

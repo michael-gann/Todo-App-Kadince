@@ -6,6 +6,8 @@ import LoginPassword from "./LoginPassword";
 
 import { login } from "../../util/auth";
 
+import "./login.css";
+
 const Login = ({ authenticated, setAuthenticated }) => {
   const history = useHistory();
   const [userEmail, setUserEmail] = useState("");
@@ -59,12 +61,14 @@ const Login = ({ authenticated, setAuthenticated }) => {
           userPassword={userPassword}
           updatePassword={updatePassword}
         ></LoginPassword>
-        <button className="login-form-button" onClick={handleUserLogin}>
-          Login
-        </button>
-        <button className="demo-login-button" onClick={handleDemoLogin}>
-          Demo Login
-        </button>
+        <div className="buttons-container">
+          <button className="login-form-button" onClick={handleUserLogin}>
+            Login
+          </button>
+          <button className="demo-login-button" onClick={handleDemoLogin}>
+            Demo Login
+          </button>
+        </div>
       </form>
     </div>
   );

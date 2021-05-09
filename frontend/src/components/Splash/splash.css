@@ -13,7 +13,7 @@
     /* backdrop-filter: blur(100rem);
     z-index: 2; */
     background: white;
-    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2) )
+    background:  rgb(16, 17, 17);
 }
 
 .splash-container > .splash-content > .splash-welcome {
