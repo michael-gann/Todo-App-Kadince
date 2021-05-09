@@ -25,11 +25,5 @@
     "bugs": {
         "url": "https://github.com/michael-gann/Todo-App-Kadince/issues"
     },
-    "homepage": "https://github.com/michael-gann/Todo-App-Kadince#readme",
-    "dependencies": {
-        "dotenv": "^9.0.1",
-        "dotenv-cli": "^4.0.0",
-        "sequelize": "^6.6.2",
-        "sequelize-cli": "^6.2.0"
-    }
+    "homepage": "https://github.com/michael-gann/Todo-App-Kadince#readme"
 }
