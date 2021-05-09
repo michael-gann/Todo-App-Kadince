@@ -6,14 +6,20 @@ nav {
     background-color: rgb(16, 17, 17);
 }
 
-nav h1 {
+nav > h1 {
     display: flex;
     justify-content: center;
+    grid-column-start: 2;
+    text-align: center;
+}
+
+nav > h1 > a {
     grid-column-start: 2;
     font-size: 3em;
     padding: .2em;
     color: rgb(14, 235, 235);
     font-family: 'Itim', cursive;
+    width: 4em;
 }
 
 nav > .login-button-container {

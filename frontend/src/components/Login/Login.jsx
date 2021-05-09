@@ -70,7 +70,7 @@ const Login = ({ authenticated, setAuthenticated }) => {
           </button>
         </div>
         <div className="have-an-account">
-          Don't have an account? Signup<a href="/signup">{`${" here"}`}</a>
+          Don't have an account? Sign up<a href="/signup">{`${" here"}`}</a>
         </div>
       </form>
     </div>

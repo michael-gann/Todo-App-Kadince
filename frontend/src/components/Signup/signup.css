@@ -1,11 +1,33 @@
 .signup-container {
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
 }
 
 .signup-form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
 
+.signup-form .email-input, .signup-form .password-input, .signup-form .firstName-input, .signup-form .lastName-input, .signup-form .password-input, .signup-form .confirmPassword-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5em;
 }
 
 .signup-form input {
+    color: cyan;
+    background-color: rgb(36, 34, 34);
+    height: 3em;
+    width: 25em;
+    padding: 10px;
+    border-radius: 1em;
+    font-size: 1em;
+}
 
+.signup-form .buttons-container > button {
+    height: 3em;
 }

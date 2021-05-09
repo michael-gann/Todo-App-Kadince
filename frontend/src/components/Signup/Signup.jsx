@@ -88,7 +88,7 @@ const Signup = ({ setAuthenticated, authenticated }) => {
         </div>
         <div className="buttons-container">
           <button className="signup-form-button" onClick={handleUserSignup}>
-            Login
+            Sign up
           </button>
         </div>
       </form>
