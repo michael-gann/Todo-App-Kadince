@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70%;
+    height: 80%;
 }
 
 .signup-form {
@@ -10,6 +10,15 @@
     flex-direction: column;
     width: 40%;
 }
+
+.signup-form > .errors {
+    align-self: center;
+    height: 4rem;
+}
+
+/* .error {
+    color: red;
+} */
 
 .signup-form .email-input, .signup-form .password-input, .signup-form .firstName-input, .signup-form .lastName-input, .signup-form .password-input, .signup-form .confirmPassword-input {
     display: flex;

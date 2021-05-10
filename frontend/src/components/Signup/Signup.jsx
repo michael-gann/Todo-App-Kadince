@@ -65,12 +65,16 @@ const Signup = ({ setAuthenticated, authenticated }) => {
 
   return (
     <div className="signup-container">
-      <div className="errors">
-        {Object.values(errors).map((e) => {
-          return <div>{e}</div>;
-        })}
-      </div>
       <form className="signup-form">
+        <div className="errors">
+          {Object.values(errors).map((e, idx) => {
+            return (
+              <div className="error" key={idx}>
+                {e}
+              </div>
+            );
+          })}
+        </div>
         <div className="firstName-input">
           <input
             type="text"
