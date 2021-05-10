@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
+import { NavLink } from "react-router-dom";
 
 import { logout } from "../../util/auth";
 
@@ -26,7 +27,7 @@ const Nav = ({ authenticated, setAuthenticated }) => {
   return (
     <nav>
       <h1>
-        <a href="/">Todo's</a>
+        <NavLink to="/">Todos</NavLink>
       </h1>
       <div className="login-button-container">
         {authenticated ? (

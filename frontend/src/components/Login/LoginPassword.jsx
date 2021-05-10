@@ -8,6 +8,7 @@ const LoginPassword = ({ userPassword, updatePassword }) => {
         value={userPassword}
         onChange={updatePassword}
         placeholder="Password"
+        required
       ></input>
     </div>
   );

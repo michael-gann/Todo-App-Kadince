@@ -11,26 +11,28 @@ export const authenticate = async () => {
 };
 
 export const login = async (email, password) => {
-  const res = await fetch("/api/users/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email,
-      password,
-    }),
-  });
+  try {
+    const res = await fetch("/api/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
 
-  const user = res.data;
+    const user = res.data;
 
-  if (!user.errors) {
-    localStorage.setItem("user", JSON.stringify(user));
-  } else {
-    return user.errors;
+    if (!user.errors) {
+      localStorage.setItem("user", JSON.stringify(user));
+    }
+
+    return user;
+  } catch (e) {
+    return e.data;
   }
-
-  return user;
 };
 
 export const logout = async () => {

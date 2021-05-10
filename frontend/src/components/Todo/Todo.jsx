@@ -18,7 +18,7 @@ const Todo = ({ todo, updateChecked, editCurrentTodo, deleteTodo }) => {
   return (
     <div className="todo-item">
       {isEditing ? (
-        <>
+        <div className="todo-item-edit">
           <input
             type="text"
             value={title}
@@ -33,7 +33,7 @@ const Todo = ({ todo, updateChecked, editCurrentTodo, deleteTodo }) => {
           >
             Edit todo
           </button>
-        </>
+        </div>
       ) : (
         <div
           className="todo-item-hover"
