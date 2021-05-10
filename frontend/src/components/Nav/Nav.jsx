@@ -26,7 +26,7 @@ const Nav = ({ authenticated, setAuthenticated }) => {
   return (
     <nav>
       <h1>
-        <a href="/">Todo's</a>
+        <a href="/">Todos</a>
       </h1>
       <div className="login-button-container">
         {authenticated ? (
