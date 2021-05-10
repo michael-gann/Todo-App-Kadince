@@ -30,7 +30,6 @@ function App() {
 
       getTodos();
     } else {
-      localStorage.clear();
       setUser({});
     }
   }, [authenticated]);
@@ -47,6 +46,7 @@ function App() {
   return (
     <BrowserRouter>
       <Nav
+        setTodos={setTodos}
         setUser={setUser}
         authenticated={authenticated}
         setAuthenticated={setAuthenticated}

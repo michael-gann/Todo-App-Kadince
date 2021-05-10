@@ -6,7 +6,7 @@ import { logout } from "../../util/auth";
 
 import "./nav.css";
 
-const Nav = ({ authenticated, setAuthenticated, setUser }) => {
+const Nav = ({ authenticated, setAuthenticated, setTodos }) => {
   const history = useHistory();
 
   const handleLogin = (e) => {
@@ -20,6 +20,7 @@ const Nav = ({ authenticated, setAuthenticated, setUser }) => {
 
     if (isLoggedOut) {
       setAuthenticated(false);
+      setTodos({});
       return history.push("/");
     }
   };
