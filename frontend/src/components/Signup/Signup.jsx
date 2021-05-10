@@ -13,13 +13,38 @@ const Signup = ({ setAuthenticated, authenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
   const handleUserSignup = async (e) => {
     e.preventDefault();
 
+    if (!firstName || !lastName || !email || !password || !confirmPassword) {
+      return;
+    }
+
+    // simple validations, not catching every edge case
+    if (!email.includes("@") || !email.includes(".com")) {
+      setErrors((prev) => {
+        return { ...prev, emailError: "Please provide a valid email" };
+      });
+      return;
+    } else {
+      delete errors["emailError"];
+      setErrors((prev) => {
+        return { ...prev };
+      });
+    }
+
     if (password !== confirmPassword) {
-      setErrors((prev) => [...prev, ["Passwords don't match"]]);
+      setErrors((prev) => {
+        return { ...prev, passError: "Passwords don't match" };
+      });
+      return;
+    } else {
+      setErrors((prev) => {
+        delete errors["passError"];
+        return { ...prev };
+      });
     }
 
     const user = await signUp(firstName, lastName, email, password);
@@ -41,7 +66,7 @@ const Signup = ({ setAuthenticated, authenticated }) => {
   return (
     <div className="signup-container">
       <div className="errors">
-        {errors.map((e) => {
+        {Object.values(errors).map((e) => {
           return <div>{e}</div>;
         })}
       </div>
@@ -52,6 +77,7 @@ const Signup = ({ setAuthenticated, authenticated }) => {
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             placeholder="Jane"
+            required
           ></input>
         </div>
         <div className="lastName-input">
@@ -60,6 +86,7 @@ const Signup = ({ setAuthenticated, authenticated }) => {
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             placeholder="Dough"
+            required
           ></input>
         </div>
         <div className="email-input">
@@ -68,6 +95,7 @@ const Signup = ({ setAuthenticated, authenticated }) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="example@janedough.com"
+            required
           ></input>
         </div>
         <div className="password-input">
@@ -76,6 +104,7 @@ const Signup = ({ setAuthenticated, authenticated }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
+            required
           ></input>
         </div>
         <div className="confirmPassword-input">
@@ -84,10 +113,15 @@ const Signup = ({ setAuthenticated, authenticated }) => {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             placeholder="Confirm password"
+            required
           ></input>
         </div>
         <div className="buttons-container">
-          <button className="signup-form-button" onClick={handleUserSignup}>
+          <button
+            className="signup-form-button"
+            type="submit"
+            onClick={handleUserSignup}
+          >
             Sign up
           </button>
         </div>

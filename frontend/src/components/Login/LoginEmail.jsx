@@ -7,6 +7,7 @@ const LoginEmail = ({ userEmail, updateEmail }) => {
         value={userEmail}
         onChange={updateEmail}
         placeholder="example@domain.com"
+        required
       ></input>
     </div>
   );
