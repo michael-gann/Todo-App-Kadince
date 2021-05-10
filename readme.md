@@ -34,10 +34,10 @@
     <img src="" alt="Logo" width=200" height="200">
   </a>
 
-  <h3 align="center">Todo-App</h3>
+  <h3 align="center">Todos</h3>
 
   <p align="center">
-  Todo app project for Kadince
+  Todo full stack app project for Kadince. Built with React on the frontend and Node.js/Express.js on the backend.
     <br />
     <!-- <a href="https://github.com/michael-gann/buttery"><strong>Explore the docs »</strong></a> -->
     <br />
@@ -83,16 +83,11 @@
 ### Built With
 
 * [React](https://reactjs.org/)
-<!-- * [Redux](https://redux.js.org/) -->
 * [Express](https://expressjs.com/)
 * [Sequelize](https://sequelize.org/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-TODO
-
-<!-- ### Prerequisites
 
 * npm
 
@@ -102,28 +97,40 @@ TODO
 
 ### Installation
 
+To get the project running locally, follow these steps
+
 1. Clone the repo
 
    ```sh
-   git clone https://github.com/michael-gann/buttery.git
+   git clone https://github.com/michael-gann/Kadince-Todo-App.git
    ```
 
-2. Install NPM packages
+2. change directory to frontend and install NPM packages
 
    ```sh
    npm install
    ```
 
-3. Change directory to app and install backend packages using pip
+3. Change directory to backend and install NPM packages
 
-  ```sh
-  pip install
-  ``` -->
+   ```sh
+   npm install
+   ```
+
+4. Start the servers in each directory with the command:
+
+   ```sh
+   npm start
+   ```
+
+<!-- ### Prerequisites
+
+ -->
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-TODO
+You can log into the app by click "Login" on the top right of the app in the navbar. There's a demo login button to get right in. Alternatively, you can create an account by clicking the link below the demo login button. Once in the app, you can immediately create a todo, mark that todo as complete, edit the todo, or delete it. You can also filter your todos by pending, complete, or all todos.
 
 ### Michael Gann
 
