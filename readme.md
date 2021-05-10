@@ -31,7 +31,7 @@
 <!-- <br /> -->
 <!-- <p align="center">
   <!-- <a href="https://github.com/michael-gann/splitwise-clone"> -->
-    <img src="" alt="Logo" width=200" height="200">
+<!--     <img src="" alt="Logo" width=200" height="200">
   </a> -->
 
   <h3 align="center">Todos</h3>
@@ -80,7 +80,7 @@
 
 <!-- ![Alt Text](https://media.giphy.com/media/ClZZPi3QXgXXoNRyyG/giphy.gif) -->
 
-### Built Withf
+### Built With
 
 * [React](https://reactjs.org/)
 * [Express](https://expressjs.com/)
@@ -130,7 +130,7 @@ To get the project running locally, follow these steps
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-You can log into the app by click "Login" on the top right of the app in the navbar. There's a demo login button to get right in. Alternatively, you can create an account by clicking the link below the demo login button. Once in the app, you can immediately create a todo, mark that todo as complete, edit the todo, or delete it. You can also filter your todos by pending, complete, or all todos.
+You can log into the app by clicking "Login" in the top right of the app in the navbar. There's a demo login button to get right in. Alternatively, you can create an account by clicking the link below the demo login button. Once in the app, you can immediately create a todo, mark that todo as complete, edit the todo, or delete it. You can also filter your todos by pending, complete, or all todos.
 
 ### Michael Gann
 
