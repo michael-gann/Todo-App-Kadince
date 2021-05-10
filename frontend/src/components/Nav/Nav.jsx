@@ -6,7 +6,7 @@ import { logout } from "../../util/auth";
 
 import "./nav.css";
 
-const Nav = ({ authenticated, setAuthenticated }) => {
+const Nav = ({ authenticated, setAuthenticated, setUser }) => {
   const history = useHistory();
 
   const handleLogin = (e) => {

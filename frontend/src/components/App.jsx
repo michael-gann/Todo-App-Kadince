@@ -29,6 +29,9 @@ function App() {
       };
 
       getTodos();
+    } else {
+      localStorage.clear();
+      setUser({});
     }
   }, [authenticated]);
 
@@ -43,7 +46,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Nav authenticated={authenticated} setAuthenticated={setAuthenticated} />
+      <Nav
+        setUser={setUser}
+        authenticated={authenticated}
+        setAuthenticated={setAuthenticated}
+      />
       <Switch>
         <Route path="/" exact={true}>
           <Splash />
@@ -56,6 +63,7 @@ function App() {
         </Route>
         <Route path="/signup" exact={true}>
           <Signup
+            setUser={setUser}
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />

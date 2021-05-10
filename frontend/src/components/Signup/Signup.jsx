@@ -5,7 +5,7 @@ import { useHistory } from "react-router";
 
 import "./signup.css";
 
-const Signup = ({ setAuthenticated, authenticated }) => {
+const Signup = ({ setAuthenticated, authenticated, setUser }) => {
   const history = useHistory();
 
   const [firstName, setFirstName] = useState("");
@@ -51,10 +51,12 @@ const Signup = ({ setAuthenticated, authenticated }) => {
 
     if (!user.errors) {
       setAuthenticated(true);
-      login(email, password);
+      const newUser = await login(email, password);
+      setUser(newUser);
       return history.push("/todos");
     } else {
       setErrors(user.errors);
+      return;
     }
   };
 
