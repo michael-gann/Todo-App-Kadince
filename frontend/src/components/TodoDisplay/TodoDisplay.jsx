@@ -165,9 +165,24 @@ const TodoDisplay = ({ authenticated, todos, setTodos, user }) => {
       <div className="todos-container">
         <div className="filters">Filters</div>
         <div className="view-controls">
-          <button onClick={() => updateView("all")}>All</button>
-          <button onClick={() => updateView("pending")}>Pending</button>
-          <button onClick={() => updateView("complete")}>Complete</button>
+          <button
+            className={showAll ? "active" : "filter-button"}
+            onClick={() => updateView("all")}
+          >
+            All
+          </button>
+          <button
+            className={showPending ? "active" : "filter-button"}
+            onClick={() => updateView("pending")}
+          >
+            Pending
+          </button>
+          <button
+            className={showComplete ? "active" : "filter-button"}
+            onClick={() => updateView("complete")}
+          >
+            Complete
+          </button>
         </div>
         {showPending ? (
           <Todos
