@@ -1,29 +1,43 @@
 .splash-container {
     display: flex;
     justify-content: center;
-    margin-top: 8%;
+    margin-top: 5%;
+    width: 100%;
+}
+
+main {
+    min-height: calc(100vh -78.2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .splash-container > .splash-content {
+    position: relative;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     width: 55%;
-    height: 60vh;
+    height: 40vh;
+    background:  rgba(17, 18, 19, .96);
     border-radius: 1.5rem;
-    /* backdrop-filter: blur(100rem);
-    z-index: 2; */
-    background: white;
-    background:  rgb(16, 17, 17);
 }
 
 .splash-container > .splash-content > .splash-welcome {
     align-self: center;
     font-size: 2rem;
     padding: .2em;
+    color: rgb(201, 201, 201);
 }
+
 
 .splash-container > .splash-content > .splash-text {
     padding: .3em;
     align-self: center;
     font-size: 1.3rem;
+    color:rgb(148, 148, 148);
+}
+
+.copy {
+    margin-top: 2%;
 }
