@@ -29,20 +29,20 @@
 <!-- PROJECT LOGO -->
 
 <!-- <br /> -->
-<p align="center">
+<!-- <p align="center">
   <!-- <a href="https://github.com/michael-gann/splitwise-clone"> -->
     <img src="" alt="Logo" width=200" height="200">
-  </a>
+  </a> -->
 
   <h3 align="center">Todos</h3>
 
   <p align="center">
-  Todo full stack app project for Kadince. Built with React on the frontend and Node.js/Express.js on the backend.
+  Todo full stack project for Kadince. Built with React on the frontend and Node.js/Express.js on the backend.
     <br />
     <!-- <a href="https://github.com/michael-gann/buttery"><strong>Explore the docs »</strong></a> -->
     <br />
     <br />
-    <a href="/">View Live Project</a>
+    <a href="https://kadince-todo-app.herokuapp.com/">View Live Project</a>
     <!-- · -->
     <!-- <a href="https://github.com/michael-gann/buttery/issues">Report Bug</a> -->
     <!-- · -->
@@ -80,7 +80,7 @@
 
 <!-- ![Alt Text](https://media.giphy.com/media/ClZZPi3QXgXXoNRyyG/giphy.gif) -->
 
-### Built With
+### Built Withf
 
 * [React](https://reactjs.org/)
 * [Express](https://expressjs.com/)
